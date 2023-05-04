@@ -9,10 +9,9 @@ phases:
   install:
     runtime-versions:
       dotnet: 3.1
+      nodejs: 14
   pre_build:
     commands:
-      - apt-get update
-      - apt-get install -y jq
       - dotnet restore AspNetCoreWebApplication/AspNetCoreWebApplication.csproj
       - dotnet restore AspNetCoreWebApplicationTest/AspNetCoreWebApplicationTest.csproj
       - dotnet tool install --global dotnet-sonarscanner
