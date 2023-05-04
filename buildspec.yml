@@ -32,7 +32,7 @@ artifacts:
     - coverage.xml
 
 reports:
-  jacoco-report:
+  coverage-report:
     files:
       - './test_output/coverage.xml'
-    file-format: 'JACOCOXML'
+    file-format: 'CoberturaXml'
