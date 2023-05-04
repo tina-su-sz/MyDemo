@@ -7,11 +7,13 @@ phases:
     commands:
       - dotnet restore AspNetCoreWebApplication/AspNetCoreWebApplication.csproj
       - dotnet restore AspNetCoreWebApplicationTest/AspNetCoreWebApplicationTest.csproj
+      - dotnet tool install --global dotnet-coverage
   build:
     commands:
       - dotnet publish -c release -o ./build_output AspNetCoreWebApplication/AspNetCoreWebApplication.csproj
       - dotnet publish -c release -o ./test_output AspNetCoreWebApplicationTest/AspNetCoreWebApplicationTest.csproj
-      - dotnet vstest AspNetCoreWebApplicationTest/bin/release/netcoreapp3.1/AspNetCoreWebApplicationTest.dll
+      - dotnet test AspNetCoreWebApplicationTest/bin/release/net6.0/AspNetCoreWebApplicationTest.dll
+      - dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
   post_build:
     commands:
 
@@ -27,3 +29,9 @@ artifacts:
     - appspec.yml
     - requirements.txt
     - template-configuration.json
+
+reports:
+  jacoco-report:
+    files:
+      - 'coverage.xml'
+    file-format: 'JACOCOXML'
