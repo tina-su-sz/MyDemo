@@ -9,7 +9,7 @@ phases:
   install:
     runtime-versions:
       dotnet: 6
-      nodejs: 14
+      nodejs: 16
   pre_build:
     commands:
       - dotnet restore AspNetCoreWebApplication/AspNetCoreWebApplication.csproj
