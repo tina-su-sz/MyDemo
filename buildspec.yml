@@ -35,4 +35,4 @@ reports:
   coverage-report:
     files:
       - './test_output/coverage.xml'
-    file-format: 'CoberturaXml'
+    file-format: 'COBERTURAXML'
