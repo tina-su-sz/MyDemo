@@ -13,7 +13,7 @@ phases:
       - dotnet publish -c release -o ./build_output AspNetCoreWebApplication/AspNetCoreWebApplication.csproj
       - dotnet publish -c release -o ./test_output AspNetCoreWebApplicationTest/AspNetCoreWebApplicationTest.csproj
       - dotnet test AspNetCoreWebApplicationTest/bin/release/net6.0/AspNetCoreWebApplicationTest.dll
-      - dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
+      - dotnet-coverage collect "dotnet test" -f xml -o ./test_output/coverage.xml
   post_build:
     commands:
 
@@ -29,9 +29,10 @@ artifacts:
     - appspec.yml
     - requirements.txt
     - template-configuration.json
+    - coverage.xml
 
 reports:
   jacoco-report:
     files:
-      - 'coverage.xml'
+      - './test_output/coverage.xml'
     file-format: 'JACOCOXML'
