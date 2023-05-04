@@ -10,6 +10,8 @@ phases:
       - dotnet tool install --global dotnet-coverage
       - ldd --version
       - xml2-config --version
+      - yum install -y libc6-dev
+      - ldd --version
   build:
     commands:
       - dotnet publish -c release -o ./build_output AspNetCoreWebApplication/AspNetCoreWebApplication.csproj
